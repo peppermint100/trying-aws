@@ -43,6 +43,7 @@ const UploadForm = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault()
+        if(!file) return alert('Please select any image file')
         const formData = new FormData()
         formData.append("img", file)
         try{
@@ -61,7 +62,7 @@ const UploadForm = () => {
         <div style={containerStyle}>
             <form onSubmit={onSubmit}>
                 <label htmlFor="upload" style={labelStyle}>Select File</label>
-                <input onChange={onChange} type="file" id="upload" style={{display: 'none'}}/>
+                <input onChange={onChange} type="file" id="upload" style={inputStyle}/>
                 <button style={buttonStyle} type="submit">🎈 Upload This Image</button>
             </form>
             <section style={{transform: "translate(-20%, 90%)"}}>

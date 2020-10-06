@@ -1,6 +1,7 @@
 import express from "express"
 import uploadRoute from "./routes/uploadRoute"
 import cors from "cors"
+import env from "./config/env"
 
 const app = express()
 const PORT = process.env.PORT || 5000
