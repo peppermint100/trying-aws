@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import env from "./../config/env"
+
+const ENDPOINT = env.ENDPOINT
 
 const UploadForm = () => {
     const containerStyle = {
@@ -24,21 +27,34 @@ const UploadForm = () => {
         padding: "12px 18px",
         cursor: "pointer",
         borderRadius: "5px",
-        backgroundColor: "#8ebf42",
+        backgroundColor: "#2980b9",
         fontSize: "16px",
         fontWeight: "bold",
         color: "#fff"
     }
 
     const [file, setFile] = useState(null)
-    const [img, setImg] = useState({
-        fileName: "",
-        filePath: ""
-    })
+    // const [img, setImg] = useState({
+    //     fileName: "",
+    //     filePath: ""
+    // })
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
         console.log(file)
+        if(!file){
+            alert('Please Upload any image file')
+            return;
+        }
+        const formData = new FormData()
+        formData.append(file)
+        try{
+            const res = await axios.post(`${ENDPOINT}/upload`, formData)
+            console.log(res)
+        }catch(err){
+            if(err) console.error(err)
+        }
+
     }
 
     const onChange = (e) => {
