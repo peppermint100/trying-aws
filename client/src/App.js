@@ -1,10 +1,13 @@
 import React from "react";
 import "./App.css";
+import UploadForm from "./components/UploadForm";
+import ImageList from "./components/ImageList";
 
 function App() {
   return (
     <div className="app">
-      <h1>Webpack</h1>
+      <UploadForm />
+      <ImageList />
     </div>
   );
 }
