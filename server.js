@@ -2,10 +2,16 @@ import express from "express"
 import uploadRoute from "./routes/uploadRoute"
 import cors from "cors"
 import env from "./config/env"
+import db from "./db/db" 
 
 const app = express()
 const PORT = process.env.PORT || 5000
-const CLIENT = process.env.CLIENT || "http://localhost:8080"
+const CLIENT = env.CLIENT 
+
+db.connect((err) => {
+    if(err) throw err
+    console.log('db connected...')
+})
 
 app.use(express.static("public"))
 app.use(express.json())
