@@ -7,13 +7,18 @@ const router = express.Router()
 const s3ImageUpload = s3Upload.single('img')
 
 router.post('/', (req, res) => {
-    s3ImageUpload(req, res, (err) => {
+        s3ImageUpload(req, res, (err) => {
         if(err){
             return res.send({ err })
         }
+
+        const text = req.body.text
+        const imgLocation = req.file.location
+        const imgKey = req.file.key
+
         return res.json({
-            imgUrl: req.file,
-            msg: "ok"
+            msg: "ok",
+            body: req.body
         })
     })
 })
