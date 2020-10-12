@@ -1,5 +1,6 @@
 import express from "express"
 import uploadRoute from "./routes/uploadRoute"
+import imgRoute from "./routes/imgRoute"
 import cors from "cors"
 import env from "./config/env"
 import db from "./db/db" 
@@ -22,6 +23,7 @@ app.use(cors({
 
 //routes
 app.use('/api/upload', uploadRoute)
+app.use('/api/img', imgRoute)
 
 app.listen(PORT, () => {
     console.log(`server running on PORT ${PORT}`)

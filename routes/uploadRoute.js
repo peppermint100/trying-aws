@@ -1,6 +1,5 @@
 import express from "express"
 import s3Upload from "./../service/s3-upload"
-import env from "./../config/env"
 import db from "./../db/db"
 import { insertPost } from "./../db/transactions/insertPost"
 
